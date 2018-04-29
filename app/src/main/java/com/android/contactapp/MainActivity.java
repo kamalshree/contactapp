@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView myText;
     private ContentResolver contentResolver;
     private boolean firstTimeLoaded=false;
+    private String mOrderBy = ContactsContract.Contacts.DISPLAY_NAME_PRIMARY;
+
 
 
     private String[] mColumnProjection = new String[]{
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public Loader onCreateLoader(int i, Bundle bundle) {
         if(i==1){
-           return new CursorLoader(this,ContactsContract.Contacts.CONTENT_URI,mColumnProjection, null,null,null);
+           return new CursorLoader(this,ContactsContract.Contacts.CONTENT_URI,mColumnProjection, null,null,mOrderBy);
         }
         return null;
     }
